@@ -39,15 +39,16 @@ def take_livedumps(cluster_list):
         time.sleep(300)
         print("livedumps collection completed on cluster: " + str(cluster))
 
-def take_node_snaps(cluster_list):
-    for cluster in cluster_list:
-        print("Taking node snaps on cluster: " + cluster + "..... \n Please be patient this can take some time... ")
-        result, snap_output, stderr = test_utils.runSSHCommand(user, cluster, "svc_snap -a", port)
-        if(result):
-            time.sleep(240)
-            print("Please continue to wait, snaps are still being taken.")
-            time.sleep(240)
-            for line in snap_output:
-                print(line.decode('utf-8'))
-        else:
-            print(stderr[0].decode('utf-8'))
+        def take_node_snaps(cluster_list):
+            for cluster in cluster_list:
+                result, snap_output, stderr = test_utils.runSSHCommand(user, cluster, "svc_snap -a", port)
+                if(result):
+                    time.sleep(240)
+                    print("Please continue to wait, snaps are still being taken.")
+                    time.sleep(240)
+                    for line in snap_output:
+                        print(line.decode('utf-8'))
+                else:
+                    print(stderr[0].decode('utf-8'))
+    
+    

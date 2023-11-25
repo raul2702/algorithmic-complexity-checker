@@ -17,7 +17,22 @@ def main():
 
 def get_complex(file, func):
     checker = ComplexityChecker(file, func)
-    checker.logarithmic_complexity()
+    complexity, log = checker.On_algorithmic_complexity()
+    if complexity == 0:
+        print("O(1)")
+    elif log:
+        if complexity == 1:
+            print("O(log n) complexity")
+        
+        elif complexity == 2:
+            print(f"O(n log n) complexity")
+
+        elif complexity > 2:
+            print(f"O(n^{complexity-1} log n) complexity")
+    else:
+        print(f"O(n^{complexity}) complexity")
+    
+
 
 if __name__ == "__main__":
     main()

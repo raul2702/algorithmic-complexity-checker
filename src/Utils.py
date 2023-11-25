@@ -34,17 +34,17 @@ def clean_function(func):
         clean_list.append(element[indentation:])
         
     return clean_list
-        
-def find_fors(func):
+
+def find_fors_and_whiles(func):
     tree = ast.parse(func)
 
-    fors = []
+    fors_and_whiles = []
 
     for node in ast.walk(tree):
-        if isinstance(node, ast.For):
-            for_content = ast.get_source_segment(func, node)
-            fors.append((node, for_content))
+        if isinstance(node, (ast.For, ast.While)):
+            loop_content = ast.get_source_segment(func, node)
+            fors_and_whiles.append((node, loop_content))
 
-    return fors
+    return fors_and_whiles
 
 

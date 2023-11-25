@@ -14,30 +14,28 @@ class ComplexityChecker:
 
         function_as_string = ''.join(clean_function_content)
 
-        found_fors = Utils.find_fors(function_as_string)
+        found_loops = Utils.find_fors_and_whiles(function_as_string)
         biggest_complexity = 0
-
-        for found_for in found_fors:
+        log = False
+        for found_loop in found_loops:
             complexity = 0
-            found_for_list = found_for[1].split("\n")
+            found_for_list = found_loop[1].split("\n")
             for element in found_for_list:
                 if pattern.search(element):
                     complexity = complexity + 1
             if complexity > biggest_complexity:
                 biggest_complexity = complexity
+                log = self.logarithmic_complexity(found_loop[1])
 
-        return biggest_complexity
+        return biggest_complexity, log
 
-    def logarithmic_complexity(self):
+    def logarithmic_complexity(self, text):
         """
         Check if the complexity is logarithmic O(Log N)
         """
-        function_content = Utils.get_function_text(self.file, self.func)
-        clean_function_content = Utils.clean_function(function_content)
-        function_as_string = ''.join(clean_function_content)
-        patron = re.compile(r'\bwhile\b.*\b(\w+)\s*=\s*(\w+)\s*([*/])\s*2\b|\bfor\b.*\bin\b\s*\brange\b.*\b\w+\b\s*([*/])\s*2', re.DOTALL)
-        resultado = patron.search(function_as_string)
-        if resultado:
-            print("Algoritmo de complejidad logaritmica.")
+        pattern = re.compile(r'\bwhile\b.*\b(\w+)\s*=\s*(\w+)\s*([*/])\s*2\b|\bfor\b.*\bin\b\s*\brange\b.*\b\w+\b\s*([*/])\s*2', re.DOTALL)
+        result = pattern.search(text)
+        if result:
+            return True
         else:
-            print("El Algoritmo no es complejidad logaritmica.")
+            return False

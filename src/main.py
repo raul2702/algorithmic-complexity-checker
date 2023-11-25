@@ -1,4 +1,5 @@
 import argparse
+import re
 from ComplexityChecker import ComplexityChecker
 
 def main():

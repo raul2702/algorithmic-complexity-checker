@@ -54,6 +54,9 @@ def take_node_snaps(cluster_list):
 def log():
     N=1000
     i=1
-    for i in range(0,N):
-        print(i)
-        i = i / 2
+    while (1 < 1000):
+        for x in range(0, 1000): #### NO SIRVIO EL WHILE
+            while (1 < 1000):
+                for x in range(0, 1000):# separar el while de las condiciones "while (i<n)"
+                    print(i)
+                    

@@ -37,7 +37,6 @@ class ComplexityChecker:
         function_as_string = ''.join(clean_function_content)
         patron = re.compile(r'\bwhile\b.*\b(\w+)\s*=\s*(\w+)\s*([*/])\s*2\b|\bfor\b.*\bin\b\s*\brange\b.*\b\w+\b\s*([*/])\s*2', re.DOTALL)
         resultado = patron.search(function_as_string)
-        self.imprimir_con_ocultos(function_as_string)
         if resultado:
             print("Algoritmo de complejidad logaritmica.")
         else:

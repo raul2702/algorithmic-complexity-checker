@@ -75,3 +75,8 @@ def n3_log_n():
                     print(j)
                     j = j / 2
 
+def constant():
+    i=10
+    x=i/2
+    
+

@@ -55,8 +55,8 @@ def log():
     N=1000
     i=1
     while (1 < 1000):
-        for x in range(0, 1000): #### NO SIRVIO EL WHILE
+        for x in range(0, 1000):
             while (1 < 1000):
-                for x in range(0, 1000):# separar el while de las condiciones "while (i<n)"
+                for x in range(0, 1000):
                     print(i)
                     

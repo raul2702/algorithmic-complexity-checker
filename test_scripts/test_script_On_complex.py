@@ -50,13 +50,28 @@ def take_node_snaps(cluster_list):
                 print(line.decode('utf-8'))
         else:
             print(stderr[0].decode('utf-8'))
+
+def log_n():
+    for i in range(0,500):
+        print(i)
+        i=i/2
+            
     
-def log():
+def n_log_n():
     N=1000
     i=1
+    for x in range(0, 1000):
+            for x in range(0, 1000):
+                print(i)
+                i=i/2
+                    
+def n3_log_n():
+    N=1000
+    j=1
     while (1 < 1000):
         for x in range(0, 1000):
             while (1 < 1000):
                 for x in range(0, 1000):
-                    print(i)
-                    
+                    print(j)
+                    j = j / 2
+
